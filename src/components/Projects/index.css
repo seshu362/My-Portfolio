@@ -28,6 +28,7 @@
 .project-card-wrapper {
   height: 100%;
   perspective: 1000px;
+  will-change: transform, opacity;
 }
 
 .project-card {
@@ -36,6 +37,7 @@
   flex-direction: column;
   transform-style: preserve-3d;
   transition: transform 0.5s;
+  will-change: transform;
 }
 
 .project-card-wrapper:hover .project-card {
@@ -47,6 +49,7 @@
   overflow: hidden;
   border-radius: 10px;
   margin-bottom: 1.5rem;
+  contain: layout style paint;
 }
 
 .project-image img {
@@ -55,6 +58,8 @@
   object-fit: cover;
   border-radius: 10px;
   transition: transform 0.5s ease;
+  transform: translateZ(0); /* Force GPU acceleration */
+  backface-visibility: hidden;
 }
 
 .project-card:hover .project-image img {
@@ -166,6 +171,33 @@
   box-shadow: 0 5px 15px rgba(121, 40, 202, 0.3);
 }
 
+/* Mobile Optimizations */
+@media (max-width: 768px) {
+  /* Disable heavy animations on mobile */
+  .project-card-wrapper:hover .project-card {
+    transform: none;
+  }
+  
+  .project-image img {
+    transition: none;
+  }
+  
+  .project-card:hover .project-image img {
+    transform: none;
+  }
+  
+  /* Show project links always on mobile */
+  .project-links {
+    opacity: 1;
+    background: rgba(0, 0, 0, 0.7);
+  }
+  
+  /* Reduce motion animations */
+  .project-card-wrapper {
+    animation: none !important;
+  }
+}
+
 @media (max-width: 992px) {
   .projects-grid {
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -175,5 +207,18 @@
 @media (max-width: 576px) {
   .projects-grid {
     grid-template-columns: 1fr;
+  }
+  
+  .project-info h3 {
+    font-size: 1.2rem;
+  }
+  
+  .project-info p {
+    font-size: 0.9rem;
+  }
+  
+  .tech-tag {
+    font-size: 0.75rem;
+    padding: 0.2rem 0.6rem;
   }
 }
