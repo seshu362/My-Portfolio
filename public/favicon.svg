@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <defs>
+    <!-- Background Gradient matching portfolio theme -->
+    <linearGradient id="bgGrad" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#B600A8" />
+      <stop offset="50%" stop-color="#7B2CBF" />
+      <stop offset="100%" stop-color="#4763FF" />
+    </linearGradient>
+
+    <!-- Glass gloss highlight -->
+    <linearGradient id="glossGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.3" />
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0" />
+    </linearGradient>
+
+    <filter id="glowFilter" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="6" stdDeviation="12" flood-color="#000000" flood-opacity="0.5" />
+    </filter>
+  </defs>
+
+  <!-- Outer Dark Container -->
+  <rect width="512" height="512" rx="120" fill="#0C0C0C" />
+
+  <!-- Inner Vibrant Gradient Badge -->
+  <rect x="24" y="24" width="464" height="464" rx="100" fill="url(#bgGrad)" filter="url(#glowFilter)" stroke="#ffffff" stroke-opacity="0.25" stroke-width="3" />
+
+  <!-- Top Glass Highlight -->
+  <path d="M 24 124 C 24 68.7 68.7 24 124 24 L 388 24 C 443.3 24 488 68.7 488 124 L 488 240 C 350 210 162 210 24 240 Z" fill="url(#glossGrad)" />
+
+  <!-- GS Monogram -->
+  <text 
+    x="50%" 
+    y="54%" 
+    fill="#FFFFFF" 
+    font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Inter', 'Kanit', sans-serif" 
+    font-weight="900" 
+    font-size="220" 
+    letter-spacing="-6" 
+    text-anchor="middle" 
+    dominant-baseline="middle"
+    style="filter: drop-shadow(0px 8px 12px rgba(0,0,0,0.45));"
+  >GS</text>
+</svg>
+

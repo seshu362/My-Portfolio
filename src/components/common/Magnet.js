@@ -1,0 +1,59 @@
+import React, { useState, useRef } from 'react';
+
+export default function Magnet({
+  children,
+  padding = 150,
+  strength = 3,
+  activeTransition = 'transform 0.3s ease-out',
+  inactiveTransition = 'transform 0.6s ease-in-out',
+  className = '',
+}) {
+  const [position, setPosition] = useState({ x: 0, y: 0 });
+  const [isHovered, setIsHovered] = useState(false);
+  const elementRef = useRef(null);
+
+  const handleMouseMove = (e) => {
+    if (!elementRef.current) return;
+    const rect = elementRef.current.getBoundingClientRect();
+    const centerX = rect.left + rect.width / 2;
+    const centerY = rect.top + rect.height / 2;
+
+    const distanceX = e.clientX - centerX;
+    const distanceY = e.clientY - centerY;
+    const distance = Math.sqrt(distanceX * distanceX + distanceY * distanceY);
+
+    const maxDistance = Math.max(rect.width, rect.height) / 2 + padding;
+
+    if (distance < maxDistance) {
+      setIsHovered(true);
+      setPosition({
+        x: distanceX / strength,
+        y: distanceY / strength,
+      });
+    } else {
+      setIsHovered(false);
+      setPosition({ x: 0, y: 0 });
+    }
+  };
+
+  const handleMouseLeave = () => {
+    setIsHovered(false);
+    setPosition({ x: 0, y: 0 });
+  };
+
+  return (
+    <div
+      ref={elementRef}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      className={`inline-block ${className}`}
+      style={{
+        transform: `translate3d(${position.x}px, ${position.y}px, 0)`,
+        transition: isHovered ? activeTransition : inactiveTransition,
+        willChange: 'transform',
+      }}
+    >
+      {children}
+    </div>
+  );
+}
