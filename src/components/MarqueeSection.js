@@ -10,7 +10,7 @@ const row1Projects = [
   {
     title: 'Femme Circle Platform',
     category: 'Full-Stack Wellness MERN',
-    src: '/ImagesWebsite/femmecircle.png',
+    src: '/project-previews/femme-preview.png',
   },
   {
     title: 'ClapKartel Casting Network',
@@ -109,7 +109,7 @@ const row2Projects = [
   {
     title: 'Femme Circle Wellness App',
     category: 'Interactive 3D Health',
-    src: '/project-previews/femme-hero.webp',
+    src: '/project-previews/femme-preview.png',
   },
   {
     title: 'ClapKartel Auditions UI',
@@ -175,7 +175,7 @@ export default function MarqueeSection() {
                 src={item.src}
                 alt={item.title}
                 loading="lazy"
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent opacity-80 group-hover:opacity-95 transition-opacity flex flex-col justify-end p-4 sm:p-5">
                 <span className="text-[10px] sm:text-xs font-mono text-purple-300 uppercase tracking-wider font-semibold">
@@ -206,7 +206,7 @@ export default function MarqueeSection() {
                 src={item.src}
                 alt={item.title}
                 loading="lazy"
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent opacity-80 group-hover:opacity-95 transition-opacity flex flex-col justify-end p-4 sm:p-5">
                 <span className="text-[10px] sm:text-xs font-mono text-blue-300 uppercase tracking-wider font-semibold">
